@@ -114,11 +114,11 @@ class Stripe : Plugin() {
             return
         }
 
-        val accountNumber = call.getString("account_number")
+        val accountNumber = call.getString("account_number") ?: ""
         val accountHolderName = call.getString("account_holder_name")
         val accountHolderType = call.getString("account_holder_type")
-        val country = call.getString("country")
-        val currency = call.getString("currency")
+        val country = call.getString("country") ?: ""
+        val currency = call.getString("currency") ?: ""
         val routingNumber = call.getString("routing_number")
 
         var stripeAccHolder = BankAccountTokenParams.Type.Individual
@@ -169,19 +169,19 @@ class Stripe : Plugin() {
 
         val sourceType = call.getInt("sourceType")
         val amount = call.getFloat("amount")!!.toLong()
-        val currency = call.getString("currency")
-        val returnURL = call.getString("returnURL")
-        val card = call.getString("card")
-        val name = call.getString("name")
+        val currency = call.getString("currency") ?: ""
+        val returnURL = call.getString("returnURL") ?: ""
+        val card = call.getString("card") ?: ""
+        val name = call.getString("name") ?: ""
         val statementDescriptor = call.getString("statementDescriptor")
         val bank = call.getString("bank")
-        val iban = call.getString("iban")
+        val iban = call.getString("iban") ?: ""
         val addressLine1 = call.getString("address_line1")
-        val city = call.getString("city")
-        val zip = call.getString("address_zip")
-        val country = call.getString("country")
-        val email = call.getString("email")
-        val callId = call.getString("callId")
+        val city = call.getString("city") ?: ""
+        val zip = call.getString("address_zip") ?: ""
+        val country = call.getString("country") ?: ""
+        val email = call.getString("email") ?: ""
+        val callId = call.getString("callId") ?: ""
 
         val idempotencyKey = call.getString("idempotencyKey")
         val stripeAccountId = call.getString("stripeAccountId")
@@ -232,7 +232,7 @@ class Stripe : Plugin() {
         }
 
         val legalEntity = call.getObject("legalEntity")
-        val tosShownAndAccepted = call.getBoolean("tosShownAndAccepted")
+        val tosShownAndAccepted = call.getBoolean("tosShownAndAccepted")  ?: false
 
         val idempotencyKey = call.getString("idempotencyKey")
         val stripeAccountId = call.getString("stripeAccountId")
@@ -255,8 +255,8 @@ class Stripe : Plugin() {
 
         if (legalEntity.has("verification")) {
             val verifyObj = legalEntity.getJSObject("verification")
-            verifyFront = verifyObj.getString("front")
-            verifyBack = verifyObj.getString("back")
+            verifyFront = verifyObj?.getString("front")
+            verifyBack = verifyObj?.getString("back")
         }
 
         val params: AccountParams
@@ -327,7 +327,7 @@ class Stripe : Plugin() {
             return
         }
 
-        val pii = call.getString("pii")
+        val pii = call.getString("pii")  ?: ""
         val idempotencyKey = call.getString("idempotencyKey")
         val stripeAccountId = call.getString("stripeAccountId")
         val callback = object : ApiResultCallback<Token> {
@@ -351,9 +351,9 @@ class Stripe : Plugin() {
             return
         }
 
-        val clientSecret = call.getString("clientSecret")
+        val clientSecret = call.getString("clientSecret") ?: ""
         val saveMethod = call.getBoolean("saveMethod", false)
-        val redirectUrl = call.getString("redirectUrl", null)
+        val redirectUrl = call.getString("redirectUrl", null) ?: ""
         val stripeAccountId = call.getString("stripeAccountId")
         val session = if(call.getString("setupFutureUsage") == "on_session")  ConfirmPaymentIntentParams.SetupFutureUsage.OnSession  else ConfirmPaymentIntentParams.SetupFutureUsage.OffSession
         var setupFutureUsage = if(saveMethod!!) session else null
@@ -384,11 +384,11 @@ class Stripe : Plugin() {
             }
 
             call.hasOption("paymentMethodId") -> {
-                params = ConfirmPaymentIntentParams.createWithPaymentMethodId(call.getString("paymentMethodId"), clientSecret, redirectUrl, saveMethod!!)
+                params = ConfirmPaymentIntentParams.createWithPaymentMethodId(call.getString("paymentMethodId") ?: "", clientSecret, redirectUrl, saveMethod!!)
             }
 
             call.hasOption("sourceId") -> {
-                params = ConfirmPaymentIntentParams.createWithSourceId(call.getString("sourceId"), clientSecret, redirectUrl, saveMethod!!)
+                params = ConfirmPaymentIntentParams.createWithSourceId(call.getString("sourceId") ?: "", clientSecret, redirectUrl, saveMethod!!)
             }
 
             call.hasOption("googlePayOptions") -> {
@@ -437,7 +437,7 @@ class Stripe : Plugin() {
             return
         }
 
-        val clientSecret = call.getString("clientSecret")
+        val clientSecret = call.getString("clientSecret") ?: ""
         val redirectUrl = call.getString("redirectUrl")
 
         val params: ConfirmSetupIntentParams
@@ -451,7 +451,7 @@ class Stripe : Plugin() {
             }
 
             call.hasOption("paymentMethodId") -> {
-                params = ConfirmSetupIntentParams.create(call.getString("paymentMethodId"), clientSecret, redirectUrl)
+                params = ConfirmSetupIntentParams.create(call.getString("paymentMethodId") ?: "", clientSecret, redirectUrl)
             }
 
             else -> {
@@ -590,7 +590,7 @@ class Stripe : Plugin() {
         }
 
         val sourceId = call.getString("sourceId")
-        val type = call.getString("type", "card")
+        val type = call.getString("type", "card") ?: "card"
 
         if (sourceId == null || sourceId.isEmpty()) {
             call.reject("You must provide a value for sourceId")
@@ -615,7 +615,7 @@ class Stripe : Plugin() {
         }
 
         val sourceId = call.getString("sourceId")
-        val type = call.getString("type", "card")
+        val type = call.getString("type", "card") ?: "card"
 
         if (sourceId == null) {
             call.reject("you must provide a sourceId")
