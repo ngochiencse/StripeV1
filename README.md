@@ -38,15 +38,13 @@
 ###### 1. Install the plugin using NPM
 
 ```shell
-npm i -S @capacitor-community/stripe
+npm i -S @hienpham/stripe
 ```
 <br>
 
-###### 2. Import from @capacitor/core
+###### 2. Import
 ```ts
-import { Plugins } from '@capacitor/core';
-
-const { Stripe } = Plugins;
+import { Stripe } from "@hienpham/stripe";
 ```
 
 ###### 3. Set your publishable key
