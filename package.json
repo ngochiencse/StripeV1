@@ -1,5 +1,5 @@
 {
-  "name": "@ngochiencse/stripe",
+  "name": "@ngochiencse/capacitor-stripe",
   "version": "1.1.2",
   "description": "Stripe Mobile SDK bindings for Capacitor v2 apps",
   "main": "dist/plugin.cjs.js",
@@ -11,7 +11,7 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "NgochiencseStripe.podspec"
+    "NgochiencseCapacitorStripe.podspec"
   ],
   "author": "Hien Pham",
   "license": "MIT",
