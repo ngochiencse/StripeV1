@@ -1,8 +1,10 @@
 <p align="center"><br><img src="https://user-images.githubusercontent.com/236501/85893648-1c92e880-b7a8-11ea-926d-95355b8175c7.png" width="128" height="128" /></p>
 <h3 align="center">Stripe</h3>
-<p align="center"><strong><code>@capacitor-community/stripe</code></strong></p>
+<p align="center"><strong><code>@ngochiencse/stripe</code></strong></p>
 <p align="center">
-  Stripe Mobile SDK bindings for Capacitor apps
+  Stripe Mobile SDK bindings for Capacitor apps.
+  <br/>
+  <b>Note</b>: This is a forked version from @capacitor-community/stripe version 1.1.0 to make it compatible with capacitor v3
 </p>
 
 <p align="center">
