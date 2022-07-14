@@ -16,7 +16,7 @@
     "@capacitor/core": "latest",
     "@capacitor/camera": "latest",
     "@capacitor/splash-screen": "latest",
-    "@hienpham/stripe": "file:.."
+    "@ngochiencse/stripe": "file:.."
   },
   "devDependencies": {
     "@capacitor/cli": "latest",

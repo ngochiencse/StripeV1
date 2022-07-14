@@ -38,13 +38,13 @@
 ###### 1. Install the plugin using NPM
 
 ```shell
-npm i -S @hienpham/stripe
+npm i -S @ngochiencse/stripe
 ```
 <br>
 
 ###### 2. Import
 ```ts
-import { Stripe } from "@hienpham/stripe";
+import { Stripe } from "@ngochiencse/stripe";
 ```
 
 ###### 3. Set your publishable key
