@@ -17,10 +17,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ngochiencse/capacitor-stripe.git"
+    "url": "git+https://github.com/ngochiencse/StripeV1.git"
   },
   "bugs": {
-    "url": "https://github.com/ngochiencse/capacitor-stripe/issues"
+    "url": "https://github.com/ngochiencse/StripeV1/issues"
   },
   "keywords": [
     "capacitor",
